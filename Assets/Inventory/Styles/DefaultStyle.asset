@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ead9c9acc746414c8829769223a93fb, type: 3}
+  m_Name: DefaultStyle
+  m_EditorClassIdentifier: 
+  inventoryImage: {fileID: 0}
+  slotImage: {fileID: 0}
+  slotClickableImage: {fileID: 0}
+  titleAlignment: 0
+  titleFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
