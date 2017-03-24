@@ -20,6 +20,10 @@ namespace GreenByteSoftware.Inventory {
 		private Transform slotInstance;
 		public Transform inventoryParent;
 
+		public Text mouseHoverText;
+		public Transform mouseHoverTransform;
+		public Image mouseHoverBackground;
+
 
 		// Use this for initialization
 		void Start () {
@@ -32,10 +36,11 @@ namespace GreenByteSoftware.Inventory {
 				slots [Random.Range (0, data.sizeX), Random.Range (0, data.sizeY)].item = new InventoryItem (spawnItem, (short)Random.Range (1, spawnItem.itemType.stackSize));
 			}
 
-			if (mouseItem == null) {
+			if (mouseItem == null || mouseItem.itemType == null) {
 				mouseItemText.enabled = false;
 				mouseItemImage.enabled = false;
 			} else {
+				mouseItemImage.enabled = true;
 				mouseItemImage.sprite = mouseItem.itemType.sprite;
 				if (mouseItem.count > 1) {
 					mouseItemText.enabled = true;
@@ -43,8 +48,9 @@ namespace GreenByteSoftware.Inventory {
 				} else {
 					mouseItemText.enabled = false;
 				}
-				mouseItemTransform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
+				mouseItemTransform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mouseItemTransform.position.z);
 			}
+
 		}
 
 		public void BuildInventory () {
@@ -84,24 +90,66 @@ namespace GreenByteSoftware.Inventory {
 
 		}
 
-		public void OnClick (int x, int y) {
-			if (mouseItem == null) {
-				mouseItem = slots [x, y].item;
-				slots [x, y].item = null;
-			} else if (slots [x, y].item == null) {
-				slots [x, y].item = mouseItem;
-				mouseItem = null;
-			} else if (mouseItem.itemType == slots [x, y].item.itemType && mouseItem.dataBits == slots [x, y].item.dataBits) {
-				short r = (short)Mathf.Min (mouseItem.count, mouseItem.itemType.stackSize - slots [x, y].item.count);
-				mouseItem.count -= r;
-				slots [x, y].item.count += r;
-				if (mouseItem.count == 0)
+		public void OnHover (int x, int y) {
+			if (slots [x, y].item == null || slots [x, y].item.itemType == null)
+				return;
+			
+			mouseHoverTransform.position = slots [x, y].transform.position;
+			mouseHoverText.enabled = true;
+			mouseHoverBackground.enabled = true;
+			mouseHoverText.text = slots [x, y].item.itemType.name + "\n" + slots [x, y].item.itemType.description;
+		}
+
+		public void OnHoverOff (int x, int y) {
+			mouseHoverText.enabled = false;
+			mouseHoverBackground.enabled = false;
+		}
+
+		public void OnClick (int x, int y, bool left) {
+			OnHoverOff (0, 0);
+			if (left) {
+				if (mouseItem == null) {
+					mouseItem = slots [x, y].item;
+					slots [x, y].item = null;
+				} else if (slots [x, y].item == null || slots [x, y].item.itemType == null) {
+					slots [x, y].item = mouseItem;
 					mouseItem = null;
+				} else if (mouseItem.itemType == slots [x, y].item.itemType && mouseItem.dataBits == slots [x, y].item.dataBits) {
+					short r = (short)Mathf.Min (mouseItem.count, mouseItem.itemType.stackSize - slots [x, y].item.count);
+					mouseItem.count -= r;
+					slots [x, y].item.count += r;
+					if (mouseItem.count == 0)
+						mouseItem = null;
+				} else {
+					InventoryItem t = slots [x, y].item;
+					slots [x, y].item = mouseItem;
+					mouseItem = t;
+				}
 			} else {
-				InventoryItem t = slots [x, y].item;
-				slots [x, y].item = mouseItem;
-				mouseItem = t;
+				if (mouseItem == null) {
+					mouseItem = new InventoryItem (slots [x, y].item, (short) (slots [x, y].item.count / 2));
+					slots [x, y].item.count -= (short) (slots [x, y].item.count / 2);
+					if (slots[x,y].item.count == 0)
+						slots[x,y].item = null;
+					if (mouseItem.count == 0)
+						mouseItem = null;
+				} else if (slots [x, y].item == null || slots [x, y].item.itemType == null) {
+					slots [x, y].item = new InventoryItem (mouseItem, 1);
+					mouseItem.count--;
+					if (mouseItem.count == 0)
+						mouseItem = null;
+				} else if (mouseItem.itemType == slots [x, y].item.itemType && mouseItem.dataBits == slots [x, y].item.dataBits && slots [x, y].item.count < slots[x,y].item.itemType.stackSize) {
+					mouseItem.count--;
+					slots [x, y].item.count++;
+					if (mouseItem.count == 0)
+						mouseItem = null;
+				} else {
+					InventoryItem t = slots [x, y].item;
+					slots [x, y].item = mouseItem;
+					mouseItem = t;
+				}
 			}
+			OnHover (x, y);
 		}
 
 	}

@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f34ce921e4c4302be6abea513227c2, type: 3}
   m_Name: DefaultData
   m_EditorClassIdentifier: 
-  name: GG
+  name: Inventory
   sizeX: 15
   sizeY: 10

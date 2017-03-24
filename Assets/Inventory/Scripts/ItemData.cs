@@ -16,6 +16,8 @@ namespace GreenByteSoftware.Inventory {
 	[CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item Data", order = 1)]
 	public class ItemData : ScriptableObject {
 
+		public string name;
+		public string description;
 		public Sprite sprite;
 		public short stackSize;
 		public ItemProperties[] properties;

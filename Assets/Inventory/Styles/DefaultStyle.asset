@@ -21,5 +21,5 @@ MonoBehaviour:
   slot: {fileID: 1295711506744392, guid: c170ea16a30764681a408818d419919b, type: 2}
   titleAlignment: 0
   titleSize: 40
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
   titleFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
