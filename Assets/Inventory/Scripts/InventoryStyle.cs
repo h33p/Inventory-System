@@ -12,10 +12,16 @@ namespace GreenByteSoftware.Inventory {
 	[CreateAssetMenu(fileName = "Inventory Style", menuName = "Inventory/Inventory Style", order = 1)]
 	public class InventoryStyle : ScriptableObject {
 
-		public GameObject inventoryImage;
-		public GameObject slotImage;
-		public GameObject slotClickableImage;
-		public NameAlignment titleAlignment;
+		public GameObject inventoryBackground;
+		public float slotMultiplier;
+		public float addX;
+		public float addY;
+		public float slotStartX;
+		public float slotStartY;
+		public GameObject slot;
+		public TextAnchor titleAlignment;
+		public int titleSize;
+		public Color color;
 		public Font titleFont;
 
 	}

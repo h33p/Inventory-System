@@ -13,12 +13,34 @@ namespace GreenByteSoftware.Inventory {
 		public bool display;
 	}
 
-	[CreateAssetMenu(fileName = "Item", menuName = "Inventory/Iten Data", order = 1)]
+	[CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item Data", order = 1)]
 	public class ItemData : ScriptableObject {
 
-		public Image image;
-		public bool stackable;
+		public Sprite sprite;
+		public short stackSize;
 		public ItemProperties[] properties;
+
+	}
+
+	[System.Serializable]
+	public class InventoryItem {
+		public ItemData itemType;
+		public short count;
+		public int dataBits;
+
+		public InventoryItem () {}
+
+		public InventoryItem (InventoryItem baseItem, short newCount) {
+			itemType = baseItem.itemType;
+			dataBits = baseItem.dataBits;
+			count = newCount;
+		}
+
+		public InventoryItem (ItemData item, short cnt, int data) {
+			itemType = item;
+			count = cnt;
+			dataBits = data;
+		}
 
 	}
 }

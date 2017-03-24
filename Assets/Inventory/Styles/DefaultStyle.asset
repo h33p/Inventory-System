@@ -11,8 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ead9c9acc746414c8829769223a93fb, type: 3}
   m_Name: DefaultStyle
   m_EditorClassIdentifier: 
-  inventoryImage: {fileID: 0}
-  slotImage: {fileID: 0}
-  slotClickableImage: {fileID: 0}
+  inventoryBackground: {fileID: 1072134970143812, guid: fffc2d134e0a44a4d8179fb94a618957,
+    type: 2}
+  slotMultiplier: 50
+  addX: 30
+  addY: 70
+  slotStartX: 40
+  slotStartY: 40
+  slot: {fileID: 1295711506744392, guid: c170ea16a30764681a408818d419919b, type: 2}
   titleAlignment: 0
+  titleSize: 40
+  color: {r: 0, g: 0, b: 0, a: 0}
   titleFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}

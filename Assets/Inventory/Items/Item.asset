@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f34ce921e4c4302be6abea513227c2, type: 3}
-  m_Name: DefaultData
+  m_Script: {fileID: 11500000, guid: a129aae28200c4796a2353a499fbbd3e, type: 3}
+  m_Name: Item
   m_EditorClassIdentifier: 
-  name: GG
-  sizeX: 15
-  sizeY: 10
+  sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  stackSize: 64
+  properties: []
