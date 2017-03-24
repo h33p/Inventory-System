@@ -574,6 +574,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbaf83120ec04badba9a01506d9c156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites: {fileID: 11400000, guid: 327464f7c669d4c4ba398a223bb80f46, type: 2}
+  mouseItem:
+    itemType: {fileID: 0}
+    count: 0
+    dataBits: 0
   mouseHoverText: {fileID: 323381595}
   mouseHoverTransform: {fileID: 323381593}
   mouseHoverBackground: {fileID: 2039000109}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 namespace GreenByteSoftware.Inventory {
 
@@ -18,19 +19,19 @@ namespace GreenByteSoftware.Inventory {
 
 		public string name;
 		public string description;
-		public Sprite sprite;
-		public short stackSize;
+
+		public SpriteNetwork sprite;
+		public short stackSize = 1;
 		public ItemProperties[] properties;
 
 	}
 
 	[System.Serializable]
-	public class InventoryItem {
+	public struct InventoryItem {
+
 		public ItemData itemType;
 		public short count;
 		public int dataBits;
-
-		public InventoryItem () {}
 
 		public InventoryItem (InventoryItem baseItem, short newCount) {
 			itemType = baseItem.itemType;

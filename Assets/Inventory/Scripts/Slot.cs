@@ -25,7 +25,7 @@ namespace GreenByteSoftware.Inventory {
 		}
 
 		void Update () {
-			if (item == null || item.itemType == null) {
+			if (item.itemType == null) {
 				displayItem.enabled = false;
 				countText.enabled = false;
 				return;
@@ -40,15 +40,15 @@ namespace GreenByteSoftware.Inventory {
 				lastCount = item.count;
 			}
 
-			if (lastSprite != item.itemType.sprite || !displayItem.enabled) {
+			if (lastSprite != item.itemType.sprite.GetSprite (InventoryVisuals.singleton.sprites) || !displayItem.enabled) {
 				displayItem.enabled = true;
-				displayItem.sprite = item.itemType.sprite;
-				lastSprite = item.itemType.sprite;
+				displayItem.sprite = item.itemType.sprite.GetSprite (InventoryVisuals.singleton.sprites);
+				lastSprite = item.itemType.sprite.GetSprite (InventoryVisuals.singleton.sprites);
 			}
 		}
 
 		public void Click (bool left) {
-			inventory.OnClick (x, y, left);
+			inventory.OnClick (x, y, left, ref InventoryVisuals.singleton.mouseItem);
 		}
 
 		public void HoverOn () {

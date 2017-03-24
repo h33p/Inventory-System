@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1f34ce921e4c4302be6abea513227c2, type: 3}
-  m_Name: DefaultData
+  m_Name: InventoryBigger
   m_EditorClassIdentifier: 
-  name: Inventory
-  sizeX: 5
+  name: Bank
+  sizeX: 10
   sizeY: 10

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a129aae28200c4796a2353a499fbbd3e, type: 3}
+  m_Name: Knob
+  m_EditorClassIdentifier: 
+  name: knob
+  description: Some random knob. I do not know what it does, neither do you. I have
+    no I dea what I am writing here, because this thing is supposed to show up when
+    a cursor is hovered on an item. But oh wait! I have just remembered why I decided
+    to write this. It is because I want to test how well it fits in the box! Here
+    we go, now it is all right.
+  sprite:
+    spriteID: 1
+  stackSize: 16
+  properties: []
